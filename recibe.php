@@ -1,6 +1,4 @@
 <?php
-session_start();
-require_once "conexiones.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -28,29 +26,34 @@ if($email == ""){
     $datos["email"] = $email;
 }
 
-// PASSWORD DINÁMICO
+// PASSWORD 
 if($password == ""){
     $errores["password"] = "*Obligatorio";
 } else {
 
     $faltantes = [];
 
+    // Mayúscula
     if(!preg_match("/[A-Z]/", $password)){
         $faltantes[] = "una mayúscula";
     }
 
+    // Número
     if(!preg_match("/[0-9]/", $password)){
         $faltantes[] = "un número";
     }
 
+    // Carácter especial
     if(!preg_match("/[\W]/", $password)){
         $faltantes[] = "un carácter especial (@, #, $, %)";
     }
 
+    // Longitud mínima
     if(strlen($password) < 8){
         $faltantes[] = "mínimo 8 caracteres";
     }
 
+    // Si falta algo → mensaje dinámico
     if(!empty($faltantes)){
         $errores["password"] = "*Debe tener: " . implode(", ", $faltantes);
     }
@@ -63,27 +66,18 @@ if($confirmar == ""){
     $errores["confirmar"] = "*Las contraseñas no coinciden";
 }
 
-// GUARDAR EN SESIÓN
-$_SESSION["errores"] = $errores;
-$_SESSION["datos"] = $datos;
-
 // SI HAY ERRORES
 if(!empty($errores)){
-    header("Location: index.php");
+    $query = http_build_query([
+        "errores" => $errores,
+        "datos" => $datos
+    ]);
+    header("Location: index.php?$query");
     exit();
 }
 
-// GUARDAR USUARIO (SIMULADO)
-$_SESSION["usuario"] = [
-    "nombre" => $nombre,
-    "email" => $email,
-    "password" => $password
-];
-
-$_SESSION["mensaje"] = "Usuario registrado correctamente";
-$_SESSION["tipo"] = "exito";
-
-header("Location: conexiones.php");
+// TODO CORRECTO
+header("Location: index.php?mensaje=Usuario registrado correctamente&tipo=exito");
 exit();
 
 }

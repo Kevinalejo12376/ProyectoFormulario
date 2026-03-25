@@ -78,6 +78,11 @@ h2{
   -webkit-text-stroke: 1px black;
   letter-spacing: 1px;
 }
+button:hover {
+  background: #4e0978;
+  border: 2px solid #ffffff;
+  color: rgb(255, 255, 255);
+}
 
 /* INPUTS */
 input {
@@ -100,31 +105,7 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-/* BOTÓN ARRIBA DERECHA */
-.cerrar-superior{
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
 
-.cerrar-superior button{
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  background: #ff4d4d;
-  color: white;
-  cursor: pointer;
-}
-
-.cerrar-superior button:hover{
-  background: #cc0000;
-}
-
-button:hover {
-  background: #4e0978;
-  border: 2px solid #ffffff;
-  color: rgb(255, 255, 255);
-}
 
 /* TEXTO LOGIN */
 .login {
@@ -156,15 +137,6 @@ border-radius: 10px;
 }
 
 /* ERRORES */
-.errores{
-background:#e7bfbf;
-color:#571515;
-border:1px solid #a72828;
-padding: 10px;
-margin-bottom: 10px;
-border-radius: 10px;
-}
-
 .error-text{
 display:flex;
 color: red;
@@ -200,7 +172,7 @@ font-weight: bold;
 /* IMAGEN */
 .imagen-derecha img{
   width: 450px;
-  margin-top: 40px; 
+  margin-top: 40px; /* 👈 BAJA LA IMAGEN */
   animation: flotar 3s ease-in-out infinite;
   border-radius: 15px;
 }
