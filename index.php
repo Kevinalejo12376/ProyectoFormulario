@@ -6,7 +6,7 @@ $mensaje = $_SESSION["mensaje"] ?? "";
 $tipo = $_SESSION["tipo"] ?? "";
 $errores = $_SESSION["errores"] ?? [];
 $datos = $_SESSION["datos"] ?? [];
-$usuario = $_SESSION["usuario"] ?? "";
+$usuario = $_SESSION["usuario"] ?? null;
 
 
 // LIMPIAR SESIÓN (IMPORTANTE)
@@ -21,7 +21,7 @@ unset($_SESSION["mensaje"], $_SESSION["tipo"], $_SESSION["errores"], $_SESSION["
 <meta charset="UTF-8">
 <title>Registro</title>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -60,13 +60,13 @@ unset($_SESSION["mensaje"], $_SESSION["tipo"], $_SESSION["errores"], $_SESSION["
 
     <!-- NOMBRE -->
     <input type="text" name="nombre" placeholder="Nombre completo"
-    value="<?php echo htmlspecialchars($datos['nombre'] ?? ''); ?>"
+    value="<?php echo $datos['nombre'] ?? ''; ?>"
     class="<?php echo isset($errores['nombre']) ? 'input-error' : ''; ?>">
     <div class="error-text"><?php echo $errores["nombre"] ?? ""; ?></div>
 
     <!-- EMAIL -->
     <input type="text" name="email" placeholder="Email"
-    value="<?php echo htmlspecialchars($datos['email'] ?? ''); ?>"
+    value="<?php echo $datos['email'] ?? ''; ?>"
     class="<?php echo isset($errores['email']) ? 'input-error' : ''; ?>">
     <div class="error-text"><?php echo $errores["email"] ?? ""; ?></div>
 

@@ -156,15 +156,6 @@ border-radius: 10px;
 }
 
 /* ERRORES */
-.errores{
-background:#e7bfbf;
-color:#571515;
-border:1px solid #a72828;
-padding: 10px;
-margin-bottom: 10px;
-border-radius: 10px;
-}
-
 .error-text{
 display:flex;
 color: red;
