@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once "conexiones.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -83,7 +82,7 @@ $_SESSION["usuario"] = [
 $_SESSION["mensaje"] = "Usuario registrado correctamente";
 $_SESSION["tipo"] = "exito";
 
-header("Location: conexiones.php");
+header("Location: index.php");
 exit();
 
 }
